@@ -13,6 +13,7 @@ class DateTime :  public QDateTimeEdit,public QDateTime
 public:
     DateTime(QWidget * Q) : QDateTimeEdit(Q){
         QDateTimeEdit::setDateTime(currentDateTime());
+        setDisabled(true);
     }
 
 public slots:

@@ -10,6 +10,15 @@
     <height>481</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Times</family>
+    <pointsize>15</pointsize>
+    <weight>9</weight>
+    <italic>true</italic>
+    <bold>false</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -21,105 +30,12 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLCDNumber" name="lcdNumber">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>230</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times</family>
-      <pointsize>18</pointsize>
-      <weight>9</weight>
-      <italic>true</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 italic 18pt &quot;Times&quot;;</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="digitCount">
-     <number>2</number>
-    </property>
-    <property name="segmentStyle">
-     <enum>QLCDNumber::Flat</enum>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="lcdNumber_2">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>230</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times</family>
-      <pointsize>15</pointsize>
-      <weight>9</weight>
-      <italic>true</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="digitCount">
-     <number>2</number>
-    </property>
-    <property name="segmentStyle">
-     <enum>QLCDNumber::Flat</enum>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="lcdNumber_3">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>230</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times</family>
-      <pointsize>15</pointsize>
-      <weight>9</weight>
-      <italic>true</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="digitCount">
-     <number>2</number>
-    </property>
-    <property name="segmentStyle">
-     <enum>QLCDNumber::Flat</enum>
-    </property>
-   </widget>
    <widget class="DateTime" name="dateTimeEdit">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>50</y>
-      <width>121</width>
+      <x>230</x>
+      <y>40</y>
+      <width>181</width>
       <height>41</height>
      </rect>
     </property>
@@ -130,7 +46,7 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>130</x>
       <y>100</y>
       <width>131</width>
       <height>51</height>
@@ -143,7 +59,7 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>380</x>
       <y>100</y>
       <width>121</width>
       <height>51</height>
@@ -156,41 +72,11 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
      <string>TIME FORMAT</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>240</y>
-      <width>42</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox_2">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>270</y>
-      <width>42</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox_3">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>300</y>
-      <width>42</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>300</y>
+      <x>180</x>
+      <y>290</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -202,27 +88,99 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>300</y>
+      <x>360</x>
+      <y>290</y>
       <width>121</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>RESTART</string>
+     <string>RESET!</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>350</y>
+      <x>280</x>
+      <y>340</y>
       <width>112</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>START</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>230</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>2</number>
+    </property>
+    <property name="value" stdset="0">
+     <double>0.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber_2">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>230</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber_3">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>230</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="digitCount">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>250</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_2">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>280</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_3">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>320</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -241,22 +199,6 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>dateTimeEdit</receiver>
-   <slot>changeDateFormat()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>261</x>
-     <y>110</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>322</x>
-     <y>70</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
    <receiver>dateTimeEdit</receiver>
@@ -267,8 +209,72 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
      <y>110</y>
     </hint>
     <hint type="destinationlabel">
-     <x>419</x>
-     <y>73</y>
+     <x>339</x>
+     <y>63</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>174</x>
+     <y>253</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber_2</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>79</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>316</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber_3</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>428</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>dateTimeEdit</receiver>
+   <slot>changeDateFormat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>212</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>71</y>
     </hint>
    </hints>
   </connection>
