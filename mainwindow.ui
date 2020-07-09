@@ -183,6 +183,19 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
      </rect>
     </property>
    </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>410</y>
+      <width>118</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
   </widget>
  </widget>
  <customwidgets>
@@ -275,6 +288,70 @@ font: 75 italic 15pt &quot;Times&quot;;</string>
     <hint type="destinationlabel">
      <x>292</x>
      <y>71</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>startTimer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>300</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>progressBar</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>415</x>
+     <y>309</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>424</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>progressBar</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber_2</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>progressBar</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>64</x>
+     <y>330</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>302</x>
+     <y>425</y>
     </hint>
    </hints>
   </connection>

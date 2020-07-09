@@ -16,12 +16,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    clock.cpp \
     datetime.cpp \
     main.cpp \
     mainwindow.cpp \
     timer.cpp
 
 HEADERS += \
+    Observer.h \
+    Subject.h \
+    clock.h \
     datetime.h \
     mainwindow.h \
     timer.h

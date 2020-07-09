@@ -1,25 +1,41 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-
+#include<subject.h>
 #include<QTimer>
+#include<QDateTimeEdit>
 #include<QLCDNumber>
+#include<QTime>
+#include<QProgressBar>
 
-class Timer : public QLCDNumber
+
+class Timer : public Subject,public QTimer,public QTime
 {
-    Q_OBJECT
 public:
-    Timer(QWidget * Q): QLCDNumber(Q){
-        q = new QTimer;
+    Timer(QTimer * q,int h = 0,int m = 0,int s= 0);
+
+    virtual ~Timer(){
+        if(!isActive())
+            q->stop();
+        delete q;
+    }
+    void notify() override;
+    void subscribe(Observer *o) override;
+    void unsubscribe(Observer *o) override;
+    void setState();
+    void setHour(int h);
+    void setMinute(int m);
+    void setSecond(int s);
+    QTimer* getTimer(){
+        return q;
     }
 
-public slots:
-    void getStarted();
-    void getStopped();
-    void setInterval();
+
 
 private:
+    int hour,minute,second;
     QTimer * q;
+    std::list<Observer*> observers;
 
 };
 
