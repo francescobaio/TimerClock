@@ -30,6 +30,17 @@ public:
         return q;
     }
 
+    int getHour(){
+        return hour;
+    }
+
+    int getMinute(){
+        return minute;
+    }
+
+    int getSecond(){
+        return second;
+    }
 
 
 private:

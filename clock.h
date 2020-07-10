@@ -16,7 +16,6 @@ public:
     ~Clock(){
         detach();
     }
-
     void update() override;
     void attach() override;
     void detach() override;

@@ -7,7 +7,11 @@ void Timer::notify(){
 }
 
 void Timer::setState(){
-
+    while(isActive()){
+        q->start(1000);
+        second--;
+        notify();
+    }
 }
 
 
