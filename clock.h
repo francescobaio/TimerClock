@@ -8,7 +8,6 @@
 
 class Clock : public Observer,public QLCDNumber
 {
-    Q_OBJECT
 public:
     Clock(QWidget * Q,Timer * tm) : QLCDNumber(Q),t(tm){
         attach();
@@ -16,12 +15,10 @@ public:
     ~Clock(){
         detach();
     }
+
     void update() override;
     void attach() override;
     void detach() override;
-public slots:
-    void startTimer();
-
 private:
     Timer * t;
 

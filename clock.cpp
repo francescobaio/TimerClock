@@ -19,6 +19,4 @@ void Clock::detach(){
   t->unsubscribe(this);
 }
 
-void Clock::startTimer(){
-    t->getTimer()->start();
-}
+
