@@ -1,14 +1,14 @@
 #include "clock.h"
 
 
+
 void Clock::update(){
-    if(t->getSecond() >= 60){
-        t->setMinute(t->getMinute() + 1);
-        t->setSecond(t->getSecond() - 60);
-    }
-    if(t->getMinute() >= 60)
-        t->setHour(t->getHour() + 1);
-        t->setMinute(t->getMinute() - 60);
+   hour = t->getHour();
+   minute = t->getMinute();
+   second = t->getSecond();
+    Chrono * q = dynamic_cast<Chrono*>(t);
+    if(q)
+        millisecond = q->getMillisecond();
 }
 
 void Clock::attach(){
@@ -18,5 +18,4 @@ void Clock::attach(){
 void Clock::detach(){
   t->unsubscribe(this);
 }
-
 

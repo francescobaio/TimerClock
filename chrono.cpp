@@ -8,17 +8,23 @@ void Chrono::setState(){
     while(getMinute() < 60){
        while(getSecond() < 60){
             while(millisecond < 1000){
-            getTimer()->start(1);
-            millisecond++;
+                getTimer()->start(1);
+                while(getTimer()->isActive()){
+                }
+                millisecond++;
+                notify();
             }
        setSecond(getSecond() +1);
        millisecond = 0;
+       notify();
        }
     setMinute(getMinute() +1);
     setSecond(0);
+    notify();
    }
   setHour(getHour()+1);
   setMinute(0);
+  notify();
    }
 
  }
@@ -26,7 +32,9 @@ void Chrono::setState(){
 
 
 void Chrono::setMillisecond(int ms){
-    getTimer()->setInterval(ms);
+    millisecond = ms;
     notify();
 }
+
+
 

@@ -3,10 +3,9 @@
 
 #include<subject.h>
 #include<QTimer>
-#include<QTime>
 
 
-class Timer : public Subject,public QTime
+class Timer : public Subject
 {
 public:
     Timer(QTimer * q,int h = 0,int m = 0,int s= 0);

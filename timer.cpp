@@ -2,33 +2,48 @@
 
 
 void Timer::notify(){
+ if(second){
  for(auto obs : observers)
      obs->update();
+  }
 }
 
 void Timer::setState(){
-    while(second || minute || hour){
+ while(second || minute || hour){
+    while(second >= 0){
         q->start(1000);
         while(q->isActive()){
         }
-    second--;
-    notify();
+        second --;
+        notify();
     }
+    if(minute){
+        minute--;
+        second = 59;
+        notify();
+    }
+    else if(hour){
+        hour --;
+        minute = 59;
+        second = 59;
+        notify();
+    }
+ }
 }
 
 
 void Timer::setSecond(int s){
-    q->setInterval(s * 1000);
+    second  = s ;
     notify();
 }
 
 void Timer::setMinute(int m){
-    q->setInterval(m * 60000);
+    minute = m;
     notify();
 }
 
 void Timer::setHour(int h){
-    q->setInterval(h * 3600000);
+    hour = h;
     notify();
 }
 
@@ -47,8 +62,10 @@ Timer::Timer(QTimer * q,int h ,int m ,int s) : hour(h),minute(m),second(s){
   setSecond(s);
   setMinute(m);
   setHour(h);
-  q->start();
 }
+
+
+
 
 
 
