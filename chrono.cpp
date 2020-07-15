@@ -7,7 +7,7 @@ void Chrono::setState() {
             while (getSecond() < 60) {
                 while (millisecond < 1000) {
                     getTimer()->start(1);
-                    while (getTimer()->isActive()) {
+                    while (getTimer()->remainingTime()) {
                     }
                     millisecond++;
                     notify();
