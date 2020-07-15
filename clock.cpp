@@ -2,9 +2,13 @@
 
 
 void Clock::update() {
-    hour = t->getHour();
-    minute = t->getMinute();
-    second = t->getSecond();
+    if(t->getSecond() >= 0){
+        hour = t->getHour();
+        minute = t->getMinute();
+        second = t->getSecond();
+     }else{
+            second = 0;
+        }
     Chrono *q = dynamic_cast<Chrono *>(t);
     if (q)
         millisecond = q->getMillisecond();

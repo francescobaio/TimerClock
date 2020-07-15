@@ -3,11 +3,8 @@
 
 
 void Timer::notify() {
-    if (second >= 0) {
-        for (auto obs : observers)
-            obs->update();
-    }else
-        second = 0;
+    for (auto obs : observers)
+        obs->update();
 }
 
 void Timer::setState() {
@@ -19,11 +16,14 @@ void Timer::setState() {
             second--;
             notify();
         }
+        second = 0;
         if (minute) {
             minute--;
             second = 59;
             notify();
-        } else if (hour) {
+
+        }
+        else if (hour) {
             hour--;
             minute = 59;
             second = 59;
