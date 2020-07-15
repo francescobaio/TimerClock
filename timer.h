@@ -1,48 +1,55 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-#include<subject.h>
+#include"subject.h"
 #include<QTimer>
 
 
-class Timer : public Subject
-{
+class Timer : public Subject {
 public:
-    Timer(QTimer * q,int h = 0,int m = 0,int s= 0);
+    Timer( int h = 0, int m = 0, int s = 0);
 
-    virtual ~Timer(){
-        if(!(q->isActive()))
+    virtual ~Timer() {
+        if (!(q->isActive()))
             q->stop();
         delete q;
     }
+
     void notify() override;
+
     void subscribe(Observer *o) override;
+
     void unsubscribe(Observer *o) override;
+
     virtual void setState();
+
     void setHour(int h);
+
     void setMinute(int m);
+
     void setSecond(int s);
-    QTimer* getTimer(){
+
+    QTimer *getTimer() const {
         return q;
     }
 
-    int getHour(){
+    int getHour() const {
         return hour;
     }
 
-    int getMinute(){
+    int getMinute() const {
         return minute;
     }
 
-    int getSecond(){
+    int getSecond() const {
         return second;
     }
 
 
 private:
-    int hour,minute,second;
-    QTimer * q;
-    std::list<Observer*> observers;
+    int hour, minute, second;
+    QTimer *q;
+    std::list<Observer *> observers;
 
 };
 
