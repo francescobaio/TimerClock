@@ -9,30 +9,29 @@
 
 // add necessary includes here
 
-class TestTimer : public QObject
-{
+class TestTimer : public QObject {
     Q_OBJECT
 
 public:
-    TestTimer(){}
-    ~TestTimer(){}
+    TestTimer() {}
 
-private slots:
-    void test_timer();
+    ~TestTimer() {}
+
+private
+    slots:
+            void
+
+    test_timer();
 
 };
 
-void TestTimer::test_timer()
-{
-    Timer t(0,0,10);
+void TestTimer::test_timer() {
+    Timer t(0, 0, 10);
     Clock c(&t);
     t.setState();
-    QCOMPARE(t.getSecond(),0);
-    QCOMPARE(c.getSecond(),0);
+    QCOMPARE(t.getSecond(), 0);
+    QCOMPARE(c.getSecond(), 0);
 }
-
-
-
 
 
 QTEST_MAIN(TestTimer)

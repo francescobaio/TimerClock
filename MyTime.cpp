@@ -31,12 +31,12 @@ Time &Time::operator-(const Time &right) {
     }
 
     second -= right.second;
-    if (second < 0){
+    if (second < 0) {
         second += 60;
         minute--;
     }
     minute -= right.minute;
-    if (minute < 0){
+    if (minute < 0) {
         minute += 60;
         hour--;
     }
