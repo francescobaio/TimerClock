@@ -11,7 +11,7 @@ void Timer::setState() {
     while (second || minute || hour) {
         while (second >= 0) {
             q->start(1000);
-            while(q->remainingTime()){
+            while (q->remainingTime()) {
             }
             second--;
             notify();
@@ -22,8 +22,7 @@ void Timer::setState() {
             second = 59;
             notify();
 
-        }
-        else if (hour) {
+        } else if (hour) {
             hour--;
             minute = 59;
             second = 59;
@@ -58,7 +57,7 @@ void Timer::unsubscribe(Observer *o) {
 }
 
 
-Timer::Timer( int h, int m, int s) : hour(h), minute(m), second(s) {
+Timer::Timer(int h, int m, int s) : hour(h), minute(m), second(s) {
     q = new QTimer;
     q->setSingleShot(true);
     setSecond(s);

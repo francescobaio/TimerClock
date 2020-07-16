@@ -7,7 +7,7 @@
 
 class Timer : public Subject {
 public:
-    Timer( int h = 0, int m = 0, int s = 0);
+    Timer(int h = 0, int m = 0, int s = 0);
 
     virtual ~Timer() {
         if (!(q->isActive()))
