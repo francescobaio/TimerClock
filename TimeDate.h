@@ -1,16 +1,29 @@
-#ifndef TIME_H
-#define TIME_H
+#ifndef TIMEDATE_H
+#define TIMEDATE_H
 
 
-class Time
-{
+#include"Observer.h"
+#include"button.h"
+#include<list>
+#include<string>
+
+
+
+class TimeDate : public Observer {
 public:
-    Time(int h = 0,int m = 0,int s = 0,int ms = 0) : hour(h),minute(m),second(s),millisecond(ms){}
-    Time& operator+(const Time& right);
-    Time& operator-(const Time & right);
-
+    TimeDate(){
+        attach();
+    }
+    ~TimeDate(){
+        detach();
+    }
+   void attach() override;
+   void detach() override;
+   void update() override;
 private:
-    int hour,minute,second,millisecond;
+   std::string dateTime;
+   std::list<Button*> buttons;
+
 };
 
 #endif // TIMEDATE_H

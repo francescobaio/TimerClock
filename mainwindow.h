@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include"button.h"
+#include"TimeDate.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +17,17 @@ public:
 
     ~MainWindow();
 
+private slots:
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
+    TimeDate * td;
+    Button * b;
+
 };
 #endif // MAINWINDOW_H
