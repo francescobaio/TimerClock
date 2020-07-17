@@ -14,6 +14,8 @@ public:
 
     void setState() override;
 
+    void stopState();
+
     void setMillisecond(int ms);
 
     int getMillisecond() const {

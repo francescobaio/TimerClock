@@ -27,6 +27,10 @@ void Chrono::setState() {
 
 }
 
+void Chrono::stopState(){
+
+}
+
 
 void Chrono::setMillisecond(int ms) {
     millisecond = ms;

@@ -8,6 +8,7 @@
 
 class Clock : public Observer {
 public:
+    Clock(){}
     Clock(Timer *tm, int h = 0, int m = 0, int s = 0, int ms = 0) : t(tm), hour(h), minute(m), second(s),
                                                                     millisecond(ms) {
         attach();
