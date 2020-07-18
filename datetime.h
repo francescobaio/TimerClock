@@ -5,25 +5,28 @@
 #include<QDateTime>
 
 
-
-class DateTime :  public QDateTimeEdit,public QDateTime
-{
+class DateTime : public QDateTimeEdit, public QDateTime {
     Q_OBJECT
 
 public:
-    DateTime(QWidget * Q) : QDateTimeEdit(Q){
+    DateTime(QWidget *Q) : QDateTimeEdit(Q) {
         QDateTimeEdit::setDateTime(currentDateTime());
         setDisabled(true);
     }
 
-public slots:
-    void changeTimeFormat();
+public
+    slots:
+            void
+
+    changeTimeFormat();
+
     void changeDateFormat();
 
 private:
-      void setFormat();
-      int dateCount = 0;
-      int timeCount = 0;
+    void setFormat();
+
+    int dateCount = 0;
+    int timeCount = 0;
 };
 
 #endif // DATETIME_H

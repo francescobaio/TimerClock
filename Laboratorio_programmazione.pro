@@ -16,14 +16,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ../TestMyTime/tst_testmytime.cpp \
     MyTime.cpp \
-    TestMyChrono/tst_testchrono.cpp \
     TimeDate.cpp \
+    button.cpp \
     chrono.cpp \
     clock.cpp \
-    datetime.cpp \
-    datetimeview.cpp \
     main.cpp \
     mainwindow.cpp \
     timer.cpp
@@ -32,12 +29,10 @@ HEADERS += \
     MyTime.h \
     Observer.h \
     Subject.h \
-    TestMyChrono/tst_testchrono.cpp.autosave \
     TimeDate.h \
+    button.h \
     chrono.h \
     clock.h \
-    datetime.h \
-    datetimeview.h \
     mainwindow.h \
     timer.h
 
@@ -50,10 +45,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 SUBDIRS += \
-    ../TestMyTime/TestMyTime.pro \
-    ../TestMyTime/TestMyTime.pro \
-    TestMyChrono/TestMyChrono.pro
+    ../TestChrono/TestChrono.pro \
+    ../TestTimer/TestTimer.pro \
 
 DISTFILES += \
-    ../TestMyTime/TestMyTime.pro.user \
-    TestMyChrono/TestMyChrono.pro.user
+    TestChrono/TestChrono.pro.user \
+    TestTimer/TestTimer.pro.user \

@@ -7,18 +7,20 @@
 #include<QDateTime>
 
 
-class Button : public Subject
-{
+class Button : public Subject {
 public:
-    Button(Observer * o){
-       this->o = o;
+    Button(Observer *o) {
+        this->o = o;
     }
+
     void notify() override;
+
     void subscribe(Observer *o) override;
+
     void unsubscribe(Observer *o) override;
 
 private:
-    Observer * o;
+    Observer *o;
 };
 
 #endif // BUTTON_H

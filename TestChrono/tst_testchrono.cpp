@@ -1,7 +1,7 @@
 #include <QtTest>
 #include <QCoreApplication>
-#include<../timer.h>
-#include<../timer.cpp>
+#include"../timer.h"
+#include"../timer.cpp"
 #include"../chrono.h"
 #include"../chrono.cpp"
 #include"../clock.h"

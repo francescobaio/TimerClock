@@ -8,27 +8,11 @@ void Timer::notify() {
 }
 
 void Timer::setState() {
-    while (second || minute || hour) {
-        while (second >= 0) {
-            q->start(1000);
-            while (q->remainingTime()) {
-            }
-            second--;
-            notify();
-        }
-        second = 0;
-        if (minute) {
-            minute--;
-            second = 59;
-            notify();
-
-        } else if (hour) {
-            hour--;
-            minute = 59;
-            second = 59;
-            notify();
-        }
+    q->start(1000);
+    while (q->remainingTime()) {
     }
+    second--;
+    notify();
 }
 
 

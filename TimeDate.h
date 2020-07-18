@@ -8,47 +8,52 @@
 #include<string>
 
 
-
 class TimeDate : public Observer {
 public:
-    TimeDate(){
+    TimeDate() {
         attach();
     }
-    ~TimeDate(){
+
+    ~TimeDate() {
         detach();
     }
-   void attach() override;
-   void detach() override;
-   void update() override;
+
+    void attach() override;
+
+    void detach() override;
+
+    void update() override;
 
 
-   int getTimeCount(){
-       return timeCount;
-   }
-   int getDateCount(){
-       return dateCount;
-   }
+    int getTimeCount() {
+        return timeCount;
+    }
 
-   std::string getFormat(){
-       return dateTime;
-   }
+    int getDateCount() {
+        return dateCount;
+    }
+
+    std::string getFormat() {
+        return dateTime;
+    }
 
 
-   void setDateCount(int dc){
-       this->dateCount = dc;
-   }
+    void setDateCount(int dc) {
+        this->dateCount = dc;
+    }
 
-   void setTimeCount(int tc){
-       this->timeCount = tc;
-   }
-   void setFormat();
+    void setTimeCount(int tc) {
+        this->timeCount = tc;
+    }
+
+    void setFormat();
 
 
 private:
-   std::string dateTime;
-   std::list<Button*> buttons;
-   int timeCount = 0;
-   int dateCount = 0;
+    std::string dateTime;
+    std::list<Button *> buttons;
+    int timeCount = 0;
+    int dateCount = 0;
 };
 
 #endif // TIMEDATE_H

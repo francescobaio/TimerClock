@@ -1,19 +1,19 @@
 #include"TimeDate.h"
 
 
-void TimeDate::attach(){
-    for(auto but : buttons)
+void TimeDate::attach() {
+    for (auto but : buttons)
         but->subscribe(this);
 }
 
-void TimeDate::detach(){
-    for(auto but : buttons)
+void TimeDate::detach() {
+    for (auto but : buttons)
         but->unsubscribe(this);
 }
 
 
-void TimeDate::update(){
-      setFormat();
+void TimeDate::update() {
+    setFormat();
 }
 
 
@@ -23,7 +23,7 @@ void TimeDate::setFormat() {
     else if (dateCount % 3 == 0 && timeCount % 2 == 1)
         dateTime = "dd/MM/yyyy hh:mm AP";
     else if (dateCount % 3 == 1 && timeCount % 2 == 0)
-        dateTime ="dd.MM.yyyy hh:mm";
+        dateTime = "dd.MM.yyyy hh:mm";
     else if (dateCount % 3 == 1 && timeCount % 2 == 1)
         dateTime = "dd.MM.yyyy hh:mm AP";
     else if (dateCount % 3 == 2 && timeCount % 2 == 0)
