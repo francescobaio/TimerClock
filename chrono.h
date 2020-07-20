@@ -3,24 +3,20 @@
 
 #include"timer.h"
 
-class Chrono : public Timer {
+class Chrono : public Timer
+{
+    Q_OBJECT
 public:
-    Chrono() : Timer(0, 0, 0), millisecond(0) {
-        setHour(0);
-        setMinute(0);
-        setSecond(0);
-        setMillisecond(0);
-    }
-
-    void setState() override;
-
-    void stopState();
-
+    Chrono();
+    virtual ~Chrono(){}
     void setMillisecond(int ms);
 
     int getMillisecond() const {
         return millisecond;
     }
+
+public slots:
+    void setChrono();
 
 private:
     int millisecond;

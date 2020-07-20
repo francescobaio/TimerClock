@@ -2,17 +2,24 @@
 #include<QTimer>
 
 
+
+Timer::Timer(int h, int m, int s) : hour(h), minute(m), second(s) {
+    q = new QTimer;
+    q->setTimerType(Qt::PreciseTimer);
+}
+
 void Timer::notify() {
     for (auto obs : observers)
         obs->update();
 }
 
-void Timer::setState() {
-    q->start(1000);
-    while (q->remainingTime()) {
-    }
-    second--;
-    notify();
+
+void Timer::subscribe(Observer *o) {
+    observers.push_back(o);
+}
+
+void Timer::unsubscribe(Observer *o) {
+    observers.remove(o);
 }
 
 
@@ -32,21 +39,26 @@ void Timer::setHour(int h) {
 }
 
 
-void Timer::subscribe(Observer *o) {
-    observers.push_back(o);
-}
 
-void Timer::unsubscribe(Observer *o) {
-    observers.remove(o);
-}
+void Timer::setTimer(){
+    if(second || minute || hour){
+        if(second)
+            second--;
+        else{
+            second = 59;
+            if(minute)
+            minute--;
+        else{
+            minute = 59;
+            if(hour)
+                hour --;
+        }
+    }
 
-
-Timer::Timer(int h, int m, int s) : hour(h), minute(m), second(s) {
-    q = new QTimer;
-    q->setSingleShot(true);
-    setSecond(s);
-    setMinute(m);
-    setHour(h);
+    notify();
+ }else{
+        q->stop();
+    }
 }
 
 

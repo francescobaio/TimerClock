@@ -1,11 +1,12 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include<QDateTime>
-#include<QString>
+#include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-        : QMainWindow(parent), ui(new Ui::MainWindow) {
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
     ui->setupUi(this);
+
     ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
     ui->dateTimeEdit->setDisabled(true);
     td = new TimeDate;
@@ -13,13 +14,20 @@ MainWindow::MainWindow(QWidget *parent)
 
     t = new Timer;
     ch = new Chrono;
-    c = new Clock(t);
+    c = new Clock(ch);
+    cl = new Clock(t);
 
     ui->spinBox->setRange(0, 23);
     ui->spinBox_2->setRange(0, 59);
     ui->spinBox_3->setRange(0, 59);
 
+    QObject::connect(t->getTimer(),SIGNAL(timeout()),t,SLOT(setTimer()));
+
+
+    QObject::connect(ch->getTimer(),SIGNAL(timeout()),this,SLOT(displayChrono()));
+    QObject::connect(t->getTimer(),SIGNAL(timeout()),this,SLOT(displayTimer()));
 }
+
 
 MainWindow::~MainWindow() {
     delete ui;
@@ -28,18 +36,25 @@ MainWindow::~MainWindow() {
     delete t;
     delete ch;
     delete c;
+    delete cl;
+}
+
+void MainWindow::displayChrono(){
+    ui->lcdNumber_4->display(c->getHour());
+    ui->lcdNumber_5->display(c->getMinute());
+    ui->lcdNumber_6->display(c->getSecond());
+    ui->lcdNumber_7->display(c->getMillisecond());
+}
+
+void MainWindow::displayTimer(){
+    ui->lcdNumber->display(cl->getHour());
+    ui->lcdNumber_2->display(cl->getMinute());
+    ui->lcdNumber_3->display(cl->getSecond());
 }
 
 
 void ::MainWindow::on_pushButton_5_clicked() {
-    int hour = ch->getHour();
-    ch->setHour(24);
-    ui->lcdNumber_4->display(hour);
-    ui->lcdNumber_5->display(c->getMinute());
-    ui->lcdNumber_6->display(c->getSecond());
-    ui->lcdNumber_7->display(c->getMillisecond());
-
-
+   ch->getTimer()->stop();
 }
 
 void MainWindow::on_pushButton_clicked() {
@@ -58,6 +73,11 @@ void MainWindow::on_pushButton_2_clicked() {
 
 
 void MainWindow::on_pushButton_4_clicked() {
+    ch->getTimer()->stop();
+    ch->setHour(0);
+    ch->setMinute(0);
+    ch->setSecond(0);
+    ch->setMillisecond(0);
     ui->lcdNumber_4->display(0);
     ui->lcdNumber_5->display(0);
     ui->lcdNumber_6->display(0);
@@ -65,12 +85,14 @@ void MainWindow::on_pushButton_4_clicked() {
 }
 
 void MainWindow::on_pushButton_6_clicked() {
+    t->getTimer()->stop();
     ui->lcdNumber->display(ui->spinBox->value());
     t->setHour(ui->spinBox->value());
     ui->lcdNumber_2->display(ui->spinBox_2->value());
     t->setMinute(ui->spinBox_2->value());
     ui->lcdNumber_3->display(ui->spinBox_3->value());
     t->setSecond(ui->spinBox_3->value());
+
 }
 
 
@@ -91,64 +113,14 @@ void MainWindow::on_spinBox_3_valueChanged(int arg1) {
 }
 
 void MainWindow::on_pushButton_7_clicked() {
-    while (t->getHour() || t->getMinute() || t->getSecond()) {
-        while (t->getSecond() >= 0) {
-            t->setState();
-            ui->lcdNumber_3->display(c->getSecond());
-        }
-        t->setSecond(0);
-        if (t->getMinute()) {
-            t->setMinute(t->getMinute() - 1);
-            t->setSecond(59);
-            t->notify();
-            ui->lcdNumber_2->display(c->getMinute());
-            ui->lcdNumber_3->display(c->getSecond());
-
-        } else if (t->getHour()) {
-            t->setHour(t->getHour() - 1);
-            t->setMinute(59);
-            t->setSecond(59);
-            t->notify();
-            ui->lcdNumber->display(c->getHour());
-            ui->lcdNumber_2->display(c->getMinute());
-            ui->lcdNumber_3->display(c->getSecond());
-        }
-    }
+    t->getTimer()->start(1000);
 }
 
+
 void MainWindow::on_pushButton_3_clicked() {
-    t->setHour(24);
-    t->setMinute(0);
-    t->setSecond(0);
+    t->getTimer()->stop();
 }
 
 void MainWindow::on_pushButton_8_clicked() {
-    while (ch->getHour() < 24) {
-        while (ch->getMinute() < 60) {
-            while (ch->getSecond() < 60) {
-                while (ch->getMillisecond() < 1000) {
-                    ch->setState();
-                    ui->lcdNumber_7->display(c->getMillisecond());
-                }
-                ch->setSecond(ch->getSecond() + 1);
-                ch->setMillisecond(0);
-                ch->notify();
-                ui->lcdNumber_7->display(c->getMillisecond());
-                ui->lcdNumber_6->display(c->getSecond());
-            }
-            ch->setMinute(ch->getMinute() + 1);
-            ch->setSecond(0);
-            ch->notify();
-            ui->lcdNumber_7->display(c->getMillisecond());
-            ui->lcdNumber_6->display(c->getSecond());
-            ui->lcdNumber_5->display(c->getMinute());
-        }
-        ch->setHour(ch->getHour() + 1);
-        ch->setMinute(0);
-        ch->notify();
-        ui->lcdNumber_7->display(c->getMillisecond());
-        ui->lcdNumber_6->display(c->getSecond());
-        ui->lcdNumber_5->display(c->getMinute());
-        ui->lcdNumber_4->display(c->getHour());
-    }
+   ch->getTimer()->start(1);
 }

@@ -33,7 +33,7 @@ void TestTime::test_time() {
     QTime q;
     Time t1(q.currentTime().hour(), q.currentTime().minute(), q.currentTime().second());
     Chrono cr;
-    cr.getTimer()->start(9000);
+    cr.getTimer()->start(4000);
     while (cr.getTimer()->remainingTime()) {
     }
     qDebug() << "remaining" << cr.getTimer()->remainingTime();
@@ -41,7 +41,7 @@ void TestTime::test_time() {
     Time t3 = t2 - t1;
     QCOMPARE(t3.getHour(), 0);
     QCOMPARE(t3.getMinute(), 0);
-    QCOMPARE(t3.getSecond(), 9);
+    QCOMPARE(t3.getSecond(), 4);
 
 
 }

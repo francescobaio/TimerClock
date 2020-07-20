@@ -5,23 +5,21 @@
 #include<QTimer>
 
 
-class Timer : public Subject {
-public:
-    Timer(int h = 0, int m = 0, int s = 0);
 
-    virtual ~Timer() {
-        if (!(q->isActive()))
-            q->stop();
-        delete q;
-    }
+class Timer : public Subject
+{
+    Q_OBJECT
+
+public:
+    explicit Timer(int h = 0, int m = 0 , int s = 0);
+
+    virtual ~Timer(){}
 
     void notify() override;
 
     void subscribe(Observer *o) override;
 
     void unsubscribe(Observer *o) override;
-
-    virtual void setState();
 
     void setHour(int h);
 
@@ -46,7 +44,10 @@ public:
     }
 
 
-private:
+public slots:
+    void setTimer();
+
+protected:
     int hour, minute, second;
     QTimer *q;
     std::list<Observer *> observers;

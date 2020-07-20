@@ -2,9 +2,10 @@
 #define SUBJECT_H
 
 #include "Observer.h"
+#include <QObject>
 
 
-class Subject {
+class Subject : public QObject {
 public:
     virtual ~Subject() {}
 
