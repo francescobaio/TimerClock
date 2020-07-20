@@ -5,15 +5,13 @@
 #include<QTimer>
 
 
-
-class Timer : public Subject
-{
+class Timer : public Subject {
     Q_OBJECT
 
 public:
-    explicit Timer(int h = 0, int m = 0 , int s = 0);
+    explicit Timer(int h = 0, int m = 0, int s = 0);
 
-    virtual ~Timer(){}
+    virtual ~Timer() {}
 
     void notify() override;
 
@@ -44,8 +42,11 @@ public:
     }
 
 
-public slots:
-    void setTimer();
+public
+    slots:
+            void
+
+    setTimer();
 
 protected:
     int hour, minute, second;

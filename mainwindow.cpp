@@ -2,9 +2,7 @@
 #include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+        : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
     ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
@@ -21,11 +19,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->spinBox_2->setRange(0, 59);
     ui->spinBox_3->setRange(0, 59);
 
-    QObject::connect(t->getTimer(),SIGNAL(timeout()),t,SLOT(setTimer()));
+    QObject::connect(t->getTimer(), SIGNAL(timeout()), t, SLOT(setTimer()));
 
 
-    QObject::connect(ch->getTimer(),SIGNAL(timeout()),this,SLOT(displayChrono()));
-    QObject::connect(t->getTimer(),SIGNAL(timeout()),this,SLOT(displayTimer()));
+    QObject::connect(ch->getTimer(), SIGNAL(timeout()), this, SLOT(displayChrono()));
+    QObject::connect(t->getTimer(), SIGNAL(timeout()), this, SLOT(displayTimer()));
 }
 
 
@@ -39,14 +37,13 @@ MainWindow::~MainWindow() {
     delete cl;
 }
 
-void MainWindow::displayChrono(){
+void MainWindow::displayChrono() {
     ui->lcdNumber_4->display(c->getHour());
     ui->lcdNumber_5->display(c->getMinute());
     ui->lcdNumber_6->display(c->getSecond());
-    ui->lcdNumber_7->display(c->getMillisecond());
 }
 
-void MainWindow::displayTimer(){
+void MainWindow::displayTimer() {
     ui->lcdNumber->display(cl->getHour());
     ui->lcdNumber_2->display(cl->getMinute());
     ui->lcdNumber_3->display(cl->getSecond());
@@ -54,7 +51,7 @@ void MainWindow::displayTimer(){
 
 
 void ::MainWindow::on_pushButton_5_clicked() {
-   ch->getTimer()->stop();
+    ch->getTimer()->stop();
 }
 
 void MainWindow::on_pushButton_clicked() {
@@ -77,11 +74,9 @@ void MainWindow::on_pushButton_4_clicked() {
     ch->setHour(0);
     ch->setMinute(0);
     ch->setSecond(0);
-    ch->setMillisecond(0);
     ui->lcdNumber_4->display(0);
     ui->lcdNumber_5->display(0);
     ui->lcdNumber_6->display(0);
-    ui->lcdNumber_7->display(0);
 }
 
 void MainWindow::on_pushButton_6_clicked() {
@@ -122,5 +117,5 @@ void MainWindow::on_pushButton_3_clicked() {
 }
 
 void MainWindow::on_pushButton_8_clicked() {
-   ch->getTimer()->start(1);
+    ch->getTimer()->start(1);
 }

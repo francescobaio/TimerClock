@@ -2,7 +2,6 @@
 #include<QTimer>
 
 
-
 Timer::Timer(int h, int m, int s) : hour(h), minute(m), second(s) {
     q = new QTimer;
     q->setTimerType(Qt::PreciseTimer);
@@ -39,24 +38,23 @@ void Timer::setHour(int h) {
 }
 
 
-
-void Timer::setTimer(){
-    if(second || minute || hour){
-        if(second)
+void Timer::setTimer() {
+    if (second || minute || hour) {
+        if (second)
             second--;
-        else{
+        else {
             second = 59;
-            if(minute)
-            minute--;
-        else{
-            minute = 59;
-            if(hour)
-                hour --;
+            if (minute)
+                minute--;
+            else {
+                minute = 59;
+                if (hour)
+                    hour--;
+            }
         }
-    }
 
-    notify();
- }else{
+        notify();
+    } else {
         q->stop();
     }
 }
